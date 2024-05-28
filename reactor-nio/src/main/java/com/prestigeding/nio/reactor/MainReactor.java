@@ -20,12 +20,15 @@ public class MainReactor implements Runnable{
         subReactorThreadGroup = new SubReactorThreadGroup(ioThreadCount);
     }
     public void run() {
-        System.out.println("MainReactor is running");
+        Thread thread = Thread.currentThread();
+        System.out.println(thread.getName() + "MainReactor is running");
         while (!Thread.interrupted()) {
             Set<SelectionKey> ops = null;
             try {
-                selector.select(1000);
+
+                selector.select(5000);
                 ops = selector.selectedKeys();
+                System.out.println(thread.getName() + "MainReactor is running 5s");
             } catch (IOException e) {
                 e.printStackTrace();
             }
