@@ -60,6 +60,7 @@ public class SubReactorThread extends Thread{
         while (!Thread.interrupted()) {
             Set<SelectionKey> ops = null;
             try {
+                //没有register select 会是什么结果，为空呗
                 selector.select(1000);
                 ops = selector.selectedKeys();
             } catch (IOException e) {

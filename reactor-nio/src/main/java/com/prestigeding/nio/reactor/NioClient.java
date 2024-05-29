@@ -44,6 +44,7 @@ public class NioClient {
                             }
                             sc.register(selector, SelectionKey.OP_READ);
                         } else if(key.isWritable()) {
+                            //未注册写事件 所以不会走到这个分支
                             System.out.println("客户端写");
                             SocketChannel sc = (SocketChannel)key.channel();
                             ByteBuffer buffer = ByteBuffer.allocate(1024);

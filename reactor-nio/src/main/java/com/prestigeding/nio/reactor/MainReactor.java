@@ -26,6 +26,7 @@ public class MainReactor implements Runnable{
             Set<SelectionKey> ops = null;
             try {
 
+                //这里会阻塞嘛，选择器阻塞，所有注册到选择器上的channel都必须是非阻塞的
                 selector.select(5000);
                 ops = selector.selectedKeys();
                 System.out.println(thread.getName() + "MainReactor is running 5s");
